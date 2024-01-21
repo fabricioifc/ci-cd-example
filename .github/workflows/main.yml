@@ -35,7 +35,7 @@ jobs:
                 python -m pip install --upgrade pip
                 pip install -r requirements.txt
             - name: Deploy to Python Anywhere
-              uses: chrispat/pythonanywhere-deploy-action@v1.0.0
+              uses: jensvog/pythonanywhere-webapp-reload-action@v1
               with:
                 pa_username: ${{ secrets.API_USERNAME }}
                 pa_token: ${{ secrets.API_KEY }}
