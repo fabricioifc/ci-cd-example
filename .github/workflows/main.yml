@@ -37,7 +37,7 @@ jobs:
             - name: Deploy to Python Anywhere
               uses: jensvog/pythonanywhere-webapp-reload-action@v1
               with:
-                pa_username: ${{ secrets.API_USERNAME }}
-                pa_token: ${{ secrets.API_KEY }}
-                pa_webapp_name: ${{ secrets.API_WEBAPP_NAME }}
-                pa_domain_name: ${{ secrets.API_DOMAIN_NAME }}
+                host: 'fabriciobizotto.pythonanywhere.com'
+                username: ${{ secrets.API_USERNAME }}
+                api_token: ${{ secrets.API_KEY }}
+                domain_name: ${{ secrets.API_DOMAIN_NAME }}
