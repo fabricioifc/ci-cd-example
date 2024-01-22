@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --forceExit"
+    "start": "node app.js",
+    "test": "jest --forceExit",
+    "build": "npm run clean && npm run generate-static",
+    "clean": "rm -rf docs",
+    "generate-static": "echo 'Generate static files here' > docs/index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d docs"
   },
   "keywords": [],
   "author": "",
