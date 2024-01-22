@@ -32,9 +32,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: ${{ github.repository }}
-          ref: gh-pages
+          ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
-          path: gh-pages
+          path: main
 
       - name: Deploy
         run: |
