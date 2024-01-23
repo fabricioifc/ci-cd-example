@@ -31,17 +31,13 @@ jobs:
 
     steps:
     - name: Setup SSH
-      # uses: webfactory/ssh-agent@v0.8.0
-      run: |
-        mkdir -p ~/.ssh
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsacicd
-        chmod 600 ~/.ssh/id_rsa_cicd
-        ssh-keyscan -t rsa fabricio.bizotto@ifc.edu.br >> ~/.ssh/known_hosts
-      
+      uses: webfactory/ssh-agent@v0.8.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy to Server
       run: |
-        ssh -o StrictHostKeyChecking=no fabricio@cti.videira.ifc.edu.br -p 50236 "cd /home/fabricio/cicd && git pull && npm install && npm start"
+        scp -r -P ${{ secrets.SSH_PORT }} ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DEST_PATH }}
 
 # # .github/workflows/ci.yml
 # name: CI/CD
