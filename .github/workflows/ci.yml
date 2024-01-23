@@ -39,7 +39,6 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no fabricio@cti.videira.ifc.edu.br -p 50236 "cd /home/fabricio/cicd && git pull && npm install && npm start"
 
-
 # # .github/workflows/ci.yml
 # name: CI/CD
 
