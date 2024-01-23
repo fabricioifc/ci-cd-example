@@ -1,5 +1,5 @@
-# .github/workflows/ci.yml
-name: CI/CD
+# .github/workflows/main.yml
+name: Node.js CI/CD with SSH
 
 on:
   push:
@@ -10,22 +10,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14]
-
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 14
 
-    - name: Install dependencies
+    - name: Install Dependencies
       run: npm install
 
-    - name: Run tests
+    - name: Run Tests
       run: npm test
 
   deploy:
@@ -33,17 +30,62 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Start SSH Agent
-      run: eval $(ssh-agent -s)
-
     - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.5.3
+      uses: webfactory/ssh-agent@v0.5.2
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }} # settings > secrets
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy to Server
       run: |
-        scp -r -P ${{ secrets.SSH_PORT }} ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DEST_PATH }}
+        ssh -o StrictHostKeyChecking=no fabricio@cti.videira.ifc.edu.br -p 50236 "cd /home/fabricio/cicd && git pull && npm install && npm start"
+
+
+# # .github/workflows/ci.yml
+# name: CI/CD
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       matrix:
+#         node-version: [14]
+
+#     steps:
+#     - uses: actions/checkout@v2
+
+#     - name: Setup Node.js
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: ${{ matrix.node-version }}
+
+#     - name: Install dependencies
+#       run: npm install
+
+#     - name: Run tests
+#       run: npm test
+
+#   deploy:
+#     needs: build
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v2
+
+#     - name: Start SSH Agent
+#       run: eval $(ssh-agent -s)
+
+#     - name: Setup SSH
+#       uses: webfactory/ssh-agent@v0.5.3
+#       with:
+#         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }} # settings > secrets
+
+#     - name: Deploy to Server
+#       run: |
+#         scp -r -P ${{ secrets.SSH_PORT }} ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DEST_PATH }}
