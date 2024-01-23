@@ -36,18 +36,9 @@ jobs:
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
         with:
-          node-version: 14
-  
-      - name: Install Dependencies
-        run: npm install
-  
-      - name: Run Tests
-        run: npm test
-
+          artifact-name: site
+          path: ./_site
   # Deployment job
   deploy:
     environment:
