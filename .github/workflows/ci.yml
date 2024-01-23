@@ -33,11 +33,9 @@ jobs:
       pages: write
       id-token: write
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
-    - name: Deploy to Github Pages
-      id: deployment
-      uses: actions/deploy-pages@v3
+    - name: Deploy to GH Pages 🚀
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: .
