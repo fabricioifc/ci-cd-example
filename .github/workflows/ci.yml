@@ -40,6 +40,8 @@ jobs:
 
     - name: Deploy to Server
       run: |
+        eval $(ssh-agent -s)
+        ssh-add ~/.ssh/id_rsa
         scp -r -P 50236 ./ fabricio@cti.videira.ifc.edu.br:/home/fabricio/cicd 
 
 # # .github/workflows/ci.yml
