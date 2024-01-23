@@ -31,9 +31,13 @@ jobs:
 
     steps:
     - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      # uses: webfactory/ssh-agent@v0.8.0
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsacicd
+        chmod 600 ~/.ssh/id_rsa_cicd
+        ssh-keyscan -t rsa fabricio.bizotto@ifc.edu.br >> ~/.ssh/known_hosts
+      
 
     - name: Deploy to Server
       run: |
