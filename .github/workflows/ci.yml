@@ -40,7 +40,7 @@ jobs:
 
     - name: Deploy to Server
       run: |
-        scp -r -P ${{ secrets.SSH_PORT }} ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DEST_PATH }}
+        scp -r -P 50236 ./ fabricio@cti.videira.ifc.edu.br:/home/fabricio/cicd 
 
 # # .github/workflows/ci.yml
 # name: CI/CD
