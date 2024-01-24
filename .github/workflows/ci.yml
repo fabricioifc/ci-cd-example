@@ -26,8 +26,17 @@ jobs:
         run: |
           npm ci
           npm run build --if-present
-      - name: deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+
+      - name: deploying to surge
+        uses: mahmoudgalalz/surge-action@v0.1.5
         with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./dist
+          domain: 'cicd-actions.surge.sh'
+          path: './dist'
+        env:
+          SURGE_TOKEN: f2b40ef649d291e34910eb6cc95e0950
+      
+      # - name: deploy to gh-pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+      #     publish_dir: ./dist
