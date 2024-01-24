@@ -5,9 +5,10 @@ module.exports = {
     main: path.resolve(__dirname, './src/index.js'),
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'public'),
     publicPath: '/',
-    filename: 'index.js',
   },
   target: 'node',
+  mode: 'production',
 }
