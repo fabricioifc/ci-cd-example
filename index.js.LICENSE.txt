@@ -46,7 +46,7 @@
 
 /*!
  * depd
- * Copyright(c) 2015 Douglas Christopher Wilson
+ * Copyright(c) 2014-2018 Douglas Christopher Wilson
  * MIT Licensed
  */
 
@@ -246,7 +246,5 @@
  * Copyright(c) 2014-2017 Douglas Christopher Wilson
  * MIT Licensed
  */
-
-/*! https://mths.be/punycode v1.4.1 by @mathias */
 
 /*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
