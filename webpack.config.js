@@ -1,8 +1,10 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
-  target: 'node',
+  target: 'web',
+  externals: [nodeExternals()],
   mode: 'production',
   entry: {
     main: path.resolve(__dirname, './src/index.js'),
