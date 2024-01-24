@@ -1,1 +1,0 @@
-(()=>{"use strict";const e=require("express")();e.get("/hello",((e,s)=>{s.status(200).json({message:"Hello World!"})})),e.listen(3e3,(()=>{console.log("Example app listening at http://localhost:3000")}))})();
