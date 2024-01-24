@@ -5,27 +5,9 @@ module.exports = {
     main: path.resolve(__dirname, './src/index.js'),
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: '[name].bundle.js',
+    path: path.join(__dirname, 'dist'),
+    publicPath: '/',
+    filename: 'index.js',
   },
-  resolve: {
-    fallback: { 
-        path: require.resolve("path-browserify"),
-        fs: false,
-        stream: false,
-        crypto: false,
-        http: false,
-        https: false,
-        os: false,
-        zlib: false,
-        net: false,
-        buffer: false,
-        assert: false,
-        string_decoder: false,
-        util: false,
-        url: false,
-        querystring: false,
-    },
-    
-  }
+  target: 'node',
 }
