@@ -4,7 +4,6 @@
   "description": "Simple RESTful API with Node.js and Express",
   "main": "src/index.js",
   "homepage": "https://fabricioifc.github.io/ci-cd-example",
-  "type": "module",
   "scripts": {
     "start": "node src/index.js",
     "test": "jest --forceExit",
