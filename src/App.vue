@@ -32,7 +32,7 @@ export default {
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue Error" />
+  <HelloWorld msg="Vite + Vue" />
   <button @click="toggleDark()">Toogle Dark/Light</button>
 </template>
 
