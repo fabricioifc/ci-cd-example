@@ -14,5 +14,6 @@ export default defineConfig({
     globals: true,
     testMatch: ["**/__tests__/**/*.spec.js"],
     environment: "jsdom",
-  }
+  },
+  base: "/ci-cd-example/",
 })
