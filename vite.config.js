@@ -15,5 +15,5 @@ export default defineConfig({
     testMatch: ["**/__tests__/**/*.spec.js"],
     environment: "jsdom",
   },
-  base: "/ci-cd-example/",
+  base: "/ci-cd-example/", // importante para que funcione en github pages
 })

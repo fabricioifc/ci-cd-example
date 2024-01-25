@@ -1,9 +1,30 @@
-<script setup>
+<script>
 import HelloWorld from './components/HelloWorld.vue'
+import {useDark, useToggle } from '@vueuse/core'
+
+export default {
+  components: {
+    HelloWorld,
+  },
+  setup() {
+    const isDark = useDark({
+      className: 'dark',
+      element: document.documentElement,
+      attribute: 'data-theme',
+    })
+    const toggleDark = useToggle(isDark)
+    return {
+      isDark,
+      toggleDark,
+    }
+  }
+}
+
+
 </script>
 
 <template>
-  <div>
+  <div class="app" >
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
@@ -12,6 +33,7 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <button @click="toggleDark()">Toogle Dark/Light</button>
 </template>
 
 <style scoped>
