@@ -12,7 +12,7 @@ test('HelloWorld.vue', () => {
     });
 
     expect(wrapper.text()).toContain('HelloWorld');
-    // expect(wrapper.find('button').text()).toContain('count is 0');
-    expect(wrapper.find('button').text()).toContain('count is 1'); // Não funciona
+    expect(wrapper.find('button').text()).toContain('count is 0');
+    // expect(wrapper.find('button').text()).toContain('count is 1'); // Não funciona
     }
 );
