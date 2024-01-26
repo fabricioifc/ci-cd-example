@@ -16,4 +16,14 @@ export default defineConfig({
     environment: "jsdom",
   },
   base: process.env.NODE_ENV === "production" ? "/ci-cd-example/" : "/",
+  preview: {
+    port: process.env.NODE_ENV === "production" ? "8080" : "5173",
+    strictPort: true,
+  },
+  server: {
+    port: process.env.NODE_ENV === "production" ? "8080" : "5173",
+    strictPort: true,
+    host: true,
+  }
+
 })

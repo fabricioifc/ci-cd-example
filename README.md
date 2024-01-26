@@ -368,5 +368,82 @@ cat chave | clip.exe
 7. Faça um push na branch `main` para testar o GitHub Actions.
 8. Acesse a aba `Environments` do repositório no GitHub e verifique se o deploy foi realizado com sucesso.
 
-## Configurando o GitHub Pages
+## Configurando Dockerfile
 
+1. Crie um arquivo `Dockerfile` com o seguinte conteúdo:
+
+```dockerfile
+FROM node:18.3.0-alpine
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN yarn install
+COPY . .
+RUN yarn build
+EXPOSE 8080
+CMD ["yarn", "preview"]
+```
+
+2. Crie um arquivo `.dockerignore` com o seguinte conteúdo:
+
+```dockerfile
+node_modules
+dist
+```
+
+3. Faça "build" da imagem:
+
+```bash
+docker build . -t "ci-cd-example:v1.0"
+```
+
+4. Execute a imagem:
+
+```bash
+docker run -d --rm -p 8080:8080 "ci-cd-example:v1.0"
+```
+
+5. Acesse a aplicação no endereço `http://localhost:8080`.
+6. (opcional) Faça o push da imagem para o Docker Hub.
+
+7. Crie um arquivo `docker-compose.yml` com o seguinte conteúdo:
+
+```yml
+version: "3.9"
+services:
+  vite:
+    image: node:18.3.0-alpine
+    container_name: ci-cd-example-docker
+    entrypoint: /bin/sh
+    ports:
+      - 8080:8080
+    working_dir: /app
+    tty: true # this is required to see the output of the vite server
+    volumes:
+      - .:/app
+    command: -c "yarn install && yarn build && yarn preview"
+```
+
+8. Execute o comando abaixo para criar o container:
+
+```bash
+docker-compose up --build -d
+```
+
+9. Execute o comando abaixo para verificar os logs do container:
+
+```bash
+docker container logs -f ci-cd-example-docker
+```
+
+10. Acesse a aplicação no endereço `http://localhost:8080`.
+11. Execute o comando abaixo para acessar o container:
+
+```bash
+docker exec -it ci-cd-example-docker /bin/sh
+```
+
+12. Execute o comando abaixo para parar o container:
+
+```bash
+docker compose down
+```

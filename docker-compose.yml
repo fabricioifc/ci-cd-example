@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  vite:
+    image: node:18.3.0-alpine
+    container_name: ci-cd-example-docker
+    entrypoint: /bin/sh
+    ports:
+      - 8080:8080
+    working_dir: /app
+    tty: true # this is required to see the output of the vite server
+    volumes:
+      - .:/app
+    command: -c "yarn install && yarn build && yarn preview"

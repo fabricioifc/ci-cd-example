@@ -1,11 +1,13 @@
 <script>
+import Ambiente from './components/Ambiente.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import {useDark, useToggle } from '@vueuse/core'
 
 export default {
   components: {
     HelloWorld,
-  },
+    Ambiente
+},
   setup() {
     const isDark = useDark({
       className: 'dark',
@@ -30,9 +32,13 @@ export default {
     <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
+    <HelloWorld msg="Vite + Vue" />
+    
+    <footer>
+      <Ambiente />
+      <button @click="toggleDark()">Toogle Dark/Light</button>
+    </footer>
   </div>
-  <HelloWorld msg="Vite + Vue" />
-  <button @click="toggleDark()">Toogle Dark/Light</button>
 </template>
 
 <style scoped>
