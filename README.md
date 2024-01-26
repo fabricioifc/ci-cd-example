@@ -1,6 +1,6 @@
 # Integração Contínua + Entrega Contínua
 
-![Workflow Status](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+![Workflow Status](https://github.com/fabricioifc/ci-cd-example/actions/workflows/main.yml/badge.svg)
 
 Aplicação de exemplo para demonstrar o uso de integração contínua (Continuous Integration) e entrega contínua (Continuous Delivery) com o [GitHub Actions](https://docs.github.com/pt/actions) e [GitHub Pages](https://pages.github.com/).
 
