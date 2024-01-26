@@ -62,14 +62,6 @@ jobs:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./dist
 
-      - name: deploying to surge
-        uses: mahmoudgalalz/surge-action@v0.1.5
-        with:
-          domain: 'cicd-actions.surge.sh'
-          path: './dist'
-        env:
-          SURGE_TOKEN: f2b40ef649d291e34910eb6cc95e0950
-
 # name: Deploy Vue Application
 
 # # Controls when the action will run. 
