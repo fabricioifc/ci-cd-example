@@ -1,10 +1,12 @@
-# Integração Contínua + Entrega Contínua + Entrega Contínua
+# Integração Contínua + Entrega Contínua
+
+![Workflow Status](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
 Aplicação de exemplo para demonstrar o uso de integração contínua (Continuous Integration) e entrega contínua (Continuous Delivery) com o [GitHub Actions](https://docs.github.com/pt/actions) e [GitHub Pages](https://pages.github.com/).
 
 ## Como funciona?
 
-A cada push na branch `main`, o GitHub Actions executa o script `.github/workflows/ci.yml` que faz o build da aplicação e publica o conteúdo da pasta `dist` na branch `gh-pages`. A branch `gh-pages` é usada pelo GitHub Pages para publicar o conteúdo da aplicação.
+A cada push na branch `main`, o GitHub Actions executa o script `.github/workflows/main.yml` que faz o build da aplicação e publica o conteúdo da pasta `dist` na branch `gh-pages`. A branch `gh-pages` é usada pelo GitHub Pages para publicar o conteúdo da aplicação.
 
 ## Criando um projeto do zero com Vite e VueJS
     
@@ -272,7 +274,7 @@ export default defineConfig({
 
 ## Configurando o GitHub Actions
 
-1. Crie um arquivo `.github/workflows/ci.yml` com o seguinte conteúdo:
+1. Crie um arquivo `.github/workflows/main.yml` com o seguinte conteúdo:
 
 ```yml
 # Simple workflow for deploying static content to GitHub Pages
